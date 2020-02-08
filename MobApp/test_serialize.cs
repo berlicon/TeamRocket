@@ -1,4 +1,5 @@
-﻿using System;
+﻿using myDebug;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,15 +13,25 @@ public class test_serialize : MonoBehaviour
 	int maxCharAmount = 15;
 
 	public int A, B, C;
+	Painting Sample = new Painting();
 	Painting[] paintings = new Painting[10];
-	int currentNum = 0;
+	public int currentNum = 0;
 	debug_script debugIn;
 
 
 	private void Start()
 	{
-		InvokeRepeating("AddPainting_Button", 10, 10);
+		Sample.name = "коля";
+
+		for (int i = 0; i < paintings.Length; i++)
+			paintings[i] = Sample;
+		InvokeRepeating("AddPainting_Button", 2, 4);
+
 	}
+
+
+
+
 	public void AddPainting_Button()
 	{
 		if (currentNum > paintings.Length)
@@ -47,11 +58,11 @@ public class test_serialize : MonoBehaviour
 
 	void debugPainting(int myInt)
 	{
-		debugIn.saveLog(paintings[myInt].name.ToString());
-		debugIn.saveLog(paintings[myInt].author.ToString());
-		debugIn.saveLog(paintings[myInt].yearDate.ToString());
-		debugIn.saveLog(paintings[myInt].duration.ToString());
-		debugIn.saveLog(paintings[myInt].age.ToString());
+		debugIn.SaveLog(paintings[myInt].name.ToString());
+		debugIn.SaveLog(paintings[myInt].author.ToString());
+		debugIn.SaveLog(paintings[myInt].yearDate.ToString());
+		debugIn.SaveLog(paintings[myInt].duration.ToString());
+		debugIn.SaveLog(paintings[myInt].age.ToString());
 
 	}
 
