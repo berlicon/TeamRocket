@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using myDebug;
+using  System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,6 +20,6 @@ public class like_script : MonoBehaviour
     {
 		likeCount += Random.Range(-1, 2);
 		textMesh.text = likeCount.ToString();
-		debugIn.saveLog(likeCount.ToString());
+		//debugIn.SaveLog(likeCount.ToString());
 	}
 }

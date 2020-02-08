@@ -4,22 +4,28 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class debug_script
+
+
+namespace myDebug
 {
-	Text debug_Text;
-	string path = "Assets/Resources/test.txt";
-
-	void start()
+	public class debug_script :MonoBehaviour
 	{
-		debug_Text = GameObject.Find("Debug_Text").GetComponent<Text>();
-	}
-	public void saveLog(string myString)
-	{
-		Debug.Log(myString);
-		debug_Text.text += myString;
+		private Text debug_Text;
+		private  string path = Application.persistentDataPath + "/test.txt";
 
-		StreamWriter writer = new StreamWriter(path, true);
-		writer.WriteLine(myString + "/n");
-		writer.Close();
+		void Start()
+		{
+			debug_Text = GameObject.Find("Debug_Text").GetComponent<Text>();
+			SaveLog("debug is working");
+		}
+		public void SaveLog(string myString)
+		{
+			Debug.Log(myString);
+			debug_Text.text += myString;
+
+			StreamWriter writer = new StreamWriter(path, true);
+			writer.WriteLine(myString + "/n");
+			writer.Close();
+		}
 	}
 }
