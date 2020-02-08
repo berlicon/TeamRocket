@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class like_script : MonoBehaviour
 {
+	debug_script debugIn;
+
 	TextMesh textMesh;
 	public int likeCount;
     void Start()
@@ -17,5 +19,6 @@ public class like_script : MonoBehaviour
     {
 		likeCount += Random.Range(-1, 2);
 		textMesh.text = likeCount.ToString();
+		debugIn.saveLog(likeCount.ToString());
 	}
 }
