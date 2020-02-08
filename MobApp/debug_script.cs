@@ -10,11 +10,12 @@ namespace myDebug
 {
 	public class debug_script :MonoBehaviour
 	{
-		private Text debug_Text;
-		private  string path = Application.persistentDataPath + "/test.txt";
+		public Text debug_Text;
+		public string path;
 
 		void Start()
 		{
+			path = Application.persistentDataPath + "/test.txt";
 			debug_Text = GameObject.Find("Debug_Text").GetComponent<Text>();
 			SaveLog("debug is working");
 		}
