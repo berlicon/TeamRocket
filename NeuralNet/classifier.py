@@ -5,6 +5,7 @@ import string
 import json
 from collections import Counter
 
+
 def lemm(text):
     # lowercase
     text = ' '.join(word.lower() for word in text.split())
@@ -26,7 +27,12 @@ def classify(question, routes):
         for kwrd in routes[rt]["keywords"]:
             if kwrd in lemmedq:
                 k_cntr[rt] += 1
-    return k_cntr.most_common(1)[0][1]
+
+    mc_route = k_cntr.most_common(1)
+    if len(mc_route) == 0:
+        return 4
+    else:
+        return routes[mc_route[0][0]]["id"]
 
 
 if __name__ == "__main__":
@@ -36,9 +42,5 @@ if __name__ == "__main__":
     with open("road_map.json", 'r', encoding="utf-8") as file:
         road_map = json.load(file)
 
-    print(classify(qlist[0], road_map))
-
-
-
-
-
+    for q in qlist:
+        print(q, classify(q, road_map))
