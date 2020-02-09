@@ -2,6 +2,7 @@ from pymorphy2 import MorphAnalyzer
 import pandas as pd
 import re
 import string
+import json
 
 
 def lemm(text):
@@ -20,3 +21,4 @@ def lemm(text):
 if __name__ == "__main__":
     dfq = pd.read_csv("data/questions.csv", sep=';')
     dfq["lemmatization"] = dfq["question"].apply(lemm)
+    
