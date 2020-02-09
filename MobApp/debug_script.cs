@@ -21,11 +21,11 @@ namespace myDebug
 		}
 		public void SaveLog(string myString)
 		{
-			Debug.Log(myString);
-			debug_Text.text += myString;
+			Debug.Log(myString + "\n");
+			debug_Text.text += myString + "\n"; 
 
 			StreamWriter writer = new StreamWriter(path, true);
-			writer.WriteLine(myString + "/n");
+			writer.WriteLine(myString + "\n");
 			writer.Close();
 		}
 	}
